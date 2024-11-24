@@ -1,14 +1,15 @@
+import { diskStorage, StorageEngine } from "multer";
 import path from "path";
 import fs from "fs";
-import multer from "multer";
 
 // Create uploads directory if it doesn't exist
-const UPLOAD_DIR = path.join(__dirname, "uploads");
+const UPLOAD_DIR = path.join(__dirname, "../uploads");
 if (!fs.existsSync(UPLOAD_DIR)) {
   fs.mkdirSync(UPLOAD_DIR);
 }
 
-multer.diskStorage({
+// Configure multer for local storage
+const storage: StorageEngine = diskStorage({
   destination: (req, file, cb) => {
     cb(null, UPLOAD_DIR);
   },
@@ -18,4 +19,4 @@ multer.diskStorage({
   },
 });
 
-export default UPLOAD_DIR;
+export default storage;
