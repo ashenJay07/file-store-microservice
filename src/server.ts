@@ -1,2 +1,8 @@
-const numb: number = 6;
-console.log(numb);
+import express from "express";
+import env from "./config/env";
+
+const app = express();
+
+app.listen(env.port, () => {
+  console.log(`Server running on port ${env.port}`);
+});
