@@ -4,7 +4,8 @@ import fileUpload from "./routers/fileUpload";
 
 const app = express();
 
-app.use("/", fileUpload);
+// Routers
+app.use("/upload", fileUpload);
 
 app.listen(env.port, () => {
   console.log(`Server running on port ${env.port}`);
